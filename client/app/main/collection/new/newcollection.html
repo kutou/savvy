@@ -18,8 +18,8 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="collection-border">
-				<ul class="collection-area">
-					<li ng-repeat="item in products">
+				<ul class="collection-area" ng-model="collections" data-drop="true" data-jqyoui-options="" jqyoui-droppable="{multiple:true, onDrop: 'itemAdded()'}">
+					<li ng-repeat="item in collections">
 						<div class="card-small">
 							<div class="card-img">
 								<img ng-src="{{item.src}}" ng-click="setItem(item)">
@@ -38,54 +38,53 @@
 <div class="row">
 	<div class="col-sm-8">
 		<h3>Store Inventory <i class="fa fa-question-circle"></i></h3>
-		<div class="table-responsive">
+		<div class="table-responsive" style="width: 695px;">
 			<table class="table" border="2">
-				<thead>
-					<tr>
-						<th class="text-left verticle-middle">Product Name<br>Cost</th>
-						<th class="text-left verticle-middle">SKU CODE</th>
-						<th class="text-left verticle-middle">QTY</th>
-						<th class="text-center verticle-middle">Add to COLLECTION</th>
+				<thead style="display: table-header-group;">
+					<tr style="display: block;">
+						<th class="text-left verticle-middle" style="width: 200px;">Product Name<br>Cost</th>
+						<th class="text-left verticle-middle" style="width: 150px;">SKU CODE</th>
+						<th class="text-left verticle-middle" style="width: 100px;">QTY</th>
+						<th class="text-center verticle-middle" style="width: 240px;">Drag to Add</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td class="text-left verticle-middle">Slim-Fit Dark Shirt<br>$74.97</td>
-						<td class="text-left verticle-middle">907432</td>
-						<td class="text-left verticle-middle">10</td>
-						<td class="text-center verticle-middle"><i class="fa fa-2x fa-check-square-o"></i></td>
+				<tbody style="display: block; height: 364px; /*overflow: auto;*/ width: 100%;">
+					<tr ng-repeat="item in products track by $index" ng-show="($index / tableItems < (currentPage + 1)) && ($index / tableItems >= currentPage)" style="display: table-row;">
+						<td class="text-left verticle-middle" style="width: 200px;">{{item.name}}<br>${{item.price}}</td>
+						<td class="text-left verticle-middle" style="width: 150px;">{{item.no}}</td>
+						<td class="text-left verticle-middle" style="width: 100px;">{{item.qty}}</td>
+						<td class="text-center verticle-middle" style="width: 240px;">
+							<div class="" data-drag="true" ng-show="!item.added" data-jqyoui-options="{revert: 'invalid'}" ng-model="item" jqyoui-draggable="{index: {{$index}}, animate:true, placeholder: 'keep'}">
+								<i class="fa fa-2x fa-plus"></i>
+							</div>
+							<div ng-show="item.added">
+								<i class="fa fa-2x fa-check text-success"></i>
+							</div>
+						</td>
+					</tr>
+					<tr class="placeholder" ng-show="currentPage == lastPage -1">
+						<td colspan="4">&nbsp;</td>
 					</tr>
 					<tr>
-						<td class="text-left verticle-middle">Wash Dot Shirt<br>$61.99</td>
-						<td class="text-left verticle-middle">987412</td>
-						<td class="text-left verticle-middle">30</td>
-						<td class="text-center verticle-middle"><i class="fa fa-2x fa-square-o"></i></td>
-					</tr>
-					<tr>
-						<td class="text-left verticle-middle">Micro-Check Shirt<br>$87.99</td>
-						<td class="text-left verticle-middle">273892</td>
-						<td class="text-left verticle-middle">23</td>
-						<td class="text-center verticle-middle"><i class="fa fa-2x fa-circle-o"></i></td>
-					</tr>
-					<tr>
-						<td class="text-left verticle-middle">Wash Heathered Shirt<br>$61.99</td>
-						<td class="text-left verticle-middle">489078</td>
-						<td class="text-left verticle-middle">42</td>
-						<td class="text-center verticle-middle"><i class="fa fa-2x fa-minus-circle"></i></td>
-					</tr>
-					<tr>
-						<td class="text-left verticle-middle">Indigo Jean<br>$93.99</td>
-						<td class="text-left verticle-middle">472987</td>
-						<td class="text-left verticle-middle">78</td>
-						<td class="text-center verticle-middle"><i class="fa fa-2x fa-share-square-o"></i></td>
+						<td colspan="4" class="text-center">
+							<!--<a href=""><i class="fa fa-2x fa-arrow-circle-left" ng-show="currentPage > 0" ng-click="previousPage()"></i></a>
+							<span style="font-size: 20px;">{{currentPage + 1}}</span>
+							<a href=""><i class="fa fa-2x fa-arrow-circle-right" ng-show="currentPage < lastPage - 1" ng-click="nextPage()"></i></a>-->
+							<ul class="pagination pagination-blue" style="margin-left: 40%;padding-top: 5px;margin-top: 0;margin-bottom: 0;">
+								<li><a ng-class="{ 'disabled-page': (currentPage === 0) }" href="#" ng-click="previousPage()">&lsaquo;</a></li>
+								<li class="active" ng-click="currentPage = $index - 1">
+									<a href="#">{{currentPage + 1}}</a></li>
+								<li><a ng-class="{ 'disabled-page': (currentPage === (lastPage - 1)) }" href="#" ng-click="nextPage()">&rsaquo;</a></li>
+							</ul>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 	<div class="col-sm-4">
-		<div class="card" >
-			<div class="card-img" ng-show="selectedItem">
+		<div class="card" ng-show="selectedItem">
+			<div class="card-img">
 				<img src="{{selectedItem.src}}">
 			</div>
 			<div class="card-block" ng-show="selectedItem">
@@ -96,3 +95,29 @@
 		</div>
 	</div>
 </div>
+
+<style>
+.disabled-page {
+	cursor: default !important;
+}
+.disabled-page:hover {
+	background-color: #fff !important;
+}
+.pagination.pagination-no-border > li > a,
+.pagination.pagination-no-border > li > span {
+  border: 0;
+}
+
+.pagination > li > a, .pagination > li > span, .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span {
+  border-radius: 50%;
+  margin: 0 2px;
+  color: #777777;
+}
+
+.pagination > li.active > a, .pagination > li.active > span, .pagination > li.active > a:hover, .pagination > li.active > span:hover, .pagination > li.active > a:focus, .pagination > li.active > span:focus {
+  background-color: #2ca8ff;
+  border: 0;
+  color: #FFFFFF;
+  padding: 7px 13px;
+}
+</style>

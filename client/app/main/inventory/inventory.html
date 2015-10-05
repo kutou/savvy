@@ -3,12 +3,25 @@
 </div>
 
 <div class="row">
-	asdasdasdasdasd
-</div>
-
-<div class="col-sm-12">
-	asdasdasd
-</div>
-
-<div class="row">
+	<div class="col-sm-12">
+		<h3>Store Inventory <i class="fa fa-question-circle"></i></h3>
+		<div class="table-responsive">
+			<table class="table" border="2">
+				<thead style="display: table-header-group;">
+					<tr>
+						<th class="text-left verticle-middle">Product Name<br>Cost</th>
+						<th class="text-left verticle-middle">SKU CODE</th>
+						<th class="text-left verticle-middle">QTY</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in products track by $index" style="display: table-row;">
+						<td class="text-left verticle-middle">{{item.name}}<br>${{item.price}}</td>
+						<td class="text-left verticle-middle">{{item.no}}</td>
+						<td class="text-left verticle-middle">{{item.qty}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
