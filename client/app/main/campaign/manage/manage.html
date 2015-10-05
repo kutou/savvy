@@ -1,0 +1,66 @@
+<div class="col-sm-12" style="margin-bottom:30px;">
+			<h1 style="padding-left:10px">Campaign Overview</h1>
+		</div>
+		<div class="col-sm-12">
+			<div class="table-responsive overview-table">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								Active
+							</th>
+							<th>
+								Name
+							</th>
+							<th>
+								Collections
+							</th>
+							<th>
+								Budget
+							</th>
+							<th>
+								Duration Type
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="c in campaigns">
+							<td>
+								<toggle-switch
+					            ng-model="c.is_active"
+					            html="true"
+					            id="collectionSwitch3"
+					            class="switch-success switch-small"
+					            knob-label=""
+					            on-label=''
+					            off-label=''>
+					          </toggle-switch>
+				            </td>
+				            <td>
+				            	<span style="margin-left:10px;"> {{c.name}}</span>
+				            </td>
+			                <td>
+			                	<div class="checkbox" ng-repeat="collection in c.collections">
+								    <label>
+								      <input type="checkbox" ng-model="collection.is_active"> {{collection.name}}
+								    </label>
+								  </div>
+			                </td>
+			                <!-- <td>
+			                	<div class="slider" id="slider1" name="slider1" style="margin-left:16px; width:160px; margin-bottom:0;">
+			                	</div>
+			                </td> -->
+			                <td style="text-align:center">
+			                	<h2>${{c.budget}}</h2>
+			                </td>
+			                <td style="text-align:center">
+			                	<span ng-if="c.duration_type==='Discrete'" style="font-size:42px;" class="fa fa-square savvy-green"></span>
+			                	<span ng-if="c.duration_type==='Staggered'" style="font-size:42px;" class="fa fa-circle savvy-red"></span>
+			                	<span ng-if="c.duration_type==='Continuous'" style="font-size:42px;" class="fa fa-star savvy-blue"></span>
+			                	<p>{{c.duration_type}}</p>
+			                </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>

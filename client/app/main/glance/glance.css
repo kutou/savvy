@@ -21,11 +21,16 @@ a.glance-content, a.glance-content:hover {
     
 }
 
-.overview-table {
+.overview-table-scroll {
     height: 400px;
     width: 100%;
     display: block;
     overflow: scroll;
+}
+
+.overview-table {
+    min-height: 400px;
+    width: 100%;
 }
 
 .big-number {
