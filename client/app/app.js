@@ -8,7 +8,8 @@ angular.module('savvyAppApp', [
   'ui.bootstrap',
   'toggle-switch',
   'chart.js',
-  'ngCountup'
+  'ngCountup',
+  'ngDragDrop'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
