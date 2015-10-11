@@ -1,78 +1,58 @@
-<div class="page-sidebar page-sidebar-right page-sidebar-fixed scroll mCustomScrollbar _mCS_1 mCS-autoHide" style="height:100%; background:#33414e;right:0;top:0;"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+<div class="page-sidebar page-sidebar-right page-sidebar-fixed scroll mCustomScrollbar _mCS_1 mCS-autoHide" style="height:100%; background:#33414e;right:0;top:0;">
+    <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0">
+        <div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
                 <!-- START X-NAVIGATION -->
-                <ul class="x-navigation" id="accordion">
-                    <li class="xn-profile">
-                        <a class="profile-mini">
+            <ul class="x-navigation" id="accordion">
+                <li class="xn-profile">
+                    <a class="profile-mini">
+                        <img src="http://i.imgur.com/vFw5W1k.jpg" alt="Banana Republic">
+                    </a>
+                    <div class="profile">
+                        <div class="profile-image">
                             <img src="http://i.imgur.com/vFw5W1k.jpg" alt="Banana Republic">
-                        </a>
-                        <div class="profile">
-                            <div class="profile-image">
-                                <img src="http://i.imgur.com/vFw5W1k.jpg" alt="Banana Republic">
-                            </div>
-                            <div class="profile-data">
-                                <div class="profile-data-name">{{compaignName}}</div>
-                            </div>
-                        </div>                                                                        
-                    </li> 
-					
-					
-						
+                        </div>
+                        <div class="profile-data">
+                            <div class="profile-data-name">{{compaignName}}</div>
+                        </div>
+                    </div>                                                                        
+                </li> 
+				
+                <li style="padding:15px 0 15px 10px;">
+                    <h5 style="margin-left:-10px; cursor: pointer" ng-click="goToStep('one')">Step 1: Select Collections</h5>
+                    <div class="coverflow myCoverflow" >
+                        <div class="cover" ng-repeat="image in images"><img src="{{image.src}}" alt="Banana Republic" /></div>
+                    </div>
+                </li>
+                <li style="padding:10px 0 30px 0;">
+                    <h5 style="margin-bottom:42px;" ng-click="goToStep('two')">Step 2: Select Discount Range</h5>
+                    <my-slider min="0" max="10"  style="width:90%; margin:0 auto;" my-model="discounts"></my-slider>
+                </li>
 
-<li style="padding:15px 0 15px 10px;">
+                <li style="text-align:center; padding:10px 0;">
+                    <h5 ng-click="goToStep('three')">Step 3: Select Discount Duration</h5>    
+                    <span class="fa fa-square" style="font-size:40px"></span><span class="fa fa-circle" style="font-size:40px"></span>
+                    <span class="fa fa-heart" style="font-size:40px"></span>
+                </li>
 
-	<h5 style="margin-left:-10px;">Step 1: Select Collections</h5>
-<div class="coverflow">
-    <div class="cover"><img src="http://i.imgur.com/r4NIu8S.png" alt="Banana Republic" /></div>
-    <div class="cover"><img src="http://i.imgur.com/Xynchm4.png" alt="Banana Republic" /></div>
-    <div class="cover"><img src="http://i.imgur.com/JFzncfu.png" alt="Banana Republic" /></div>
-    <div class="cover"><img src="http://i.imgur.com/r4NIu8S.png" alt="Banana Republic" /></div>
-    <div class="cover"><img src="http://i.imgur.com/7x2VdR6.png" alt="Banana Republic" /></div>
-    <div class="cover"><img src="http://i.imgur.com/JP34QD7.png" alt="Banana Republic" /></div>
-    <div class="cover"><img src="http://i.imgur.com/QLbLiRZ.png" alt="Banana Republic" /></div>
-    <div class="cover"><img src="http://i.imgur.com/sAOMMer.png" alt="Banana Republic" /></div>
-	<div class="cover"><img src="http://i.imgur.com/gjeOAfW.png" alt="Banana Republic" /></div>
+                <li style="text-align:center; padding:20px 0 8px 0;">
+                    <h5 ng-click="goToStep('four')">Step 4: Compaign Budget</h5>    
+                    <h1>$<span style="text-decoration:underline;">{{compaignBudget}}</span></h1>
+                </li>
+
+                <li style="text-align:center; padding-top:2px;">
+                    <button style="width:60%;" class="btn btn-default">Cancel</button>
+                </li>
+            </ul>
+                <!-- END X-NAVIGATION -->
+        </div>
+    </div>
 </div>
-</li>
-                    <li style="padding:10px 0 30px 0;">
-<h5 style="margin-bottom:42px;">Step 2: Select Discount Range</h5>
-<div class="slider" style="width:90%; margin:0 auto;"></div>
     
-    </li>
-                    <li style="text-align:center; padding:10px 0;">
-<h5>Step 3: Select Discount Duration</h5>    
-<span class="fa fa-square" style="font-size:40px"></span><span class="fa fa-circle" style="font-size:40px"></span><span class="fa fa-heart" style="font-size:40px"></span>
-</li>	
-                    
-                    </li>
-                    <li style="text-align:center; padding:20px 0 8px 0;">
-<h5>Step 4: Compaign Budget</h5>    
-<h1>$<span style="text-decoration:underline;">{{compaignBudget}}</span></h1>
-</li>
-    
-    <li style="text-align:center; padding-top:2px;">
-<button style="width:60%;" class="btn btn-default">Cancel</button>
-</li>
-		
-					
-					
-					
-					
-					
-					
-					
-					
-					
-
-                    
-                </ul>
-                <!-- END X-NAVIGATION --></div>
-    
-    <script type='text/javascript'>
-        $(function() {
-            var hanzi = ["0%", "10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"];
-            $('.coverflow').coverflow({index:2});
-            	       $(".slider")
-                        
+<!-- <script type='text/javascript'>
+    $(function() {
+        var hanzi = ["0%", "10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"];
+        $('.coverflow').coverflow({index:2});
+        $(".slider")    
             .slider({ 
                 min: 0, 
                 max: 10, 
@@ -84,5 +64,5 @@
             .slider("pips", {
                 rest: false
             });
-        });
-    </script>
+    });
+</script> -->

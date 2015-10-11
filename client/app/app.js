@@ -10,6 +10,7 @@ angular.module('savvyAppApp', [
   'chart.js',
   'ngCountup',
   'ngDragDrop'
+  'savvyAppApp.directives.mySlider'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

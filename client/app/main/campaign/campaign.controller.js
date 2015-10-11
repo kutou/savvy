@@ -4,7 +4,7 @@ angular.module('savvyAppApp')
   .controller('CampaignCtrl', function ($scope, $timeout, $http) {
     $scope.currentStep = 'one';
     $scope.cNum = 1;
-    
+
     $scope.products = [
     { name: 'Blue Pants',
       number: 27381,

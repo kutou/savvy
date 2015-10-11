@@ -20,4 +20,11 @@ angular.module('savvyAppApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    /*
+      controls the slider value output in campaign page 2
+    */
+    $scope.discounts = [];
+
   });
+  
