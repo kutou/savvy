@@ -17,7 +17,7 @@
     width: 100%;
     min-height: 500px;
     padding: 1px 5px 0 5px;
-    border: 1px solid rgb(221, 221, 221);
+    /*border: 1px solid rgb(221, 221, 221);*/
     border-image-source: initial;
     border-image-slice: initial;
     border-image-width: initial;
@@ -45,7 +45,7 @@
 }
 
 .card .card-block {
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 
 .card .card-title {
@@ -64,7 +64,7 @@
     width: 102px;
     height: 130px;
     padding: 0;
-    border: 1px solid rgb(221, 221, 221);
+    /*border: 1px solid rgb(221, 221, 221);*/
     border-image-source: initial;
     border-image-slice: initial;
     border-image-width: initial;
@@ -79,7 +79,7 @@
     width: 100px;
     display: inline-table;
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .card-small .card-img img {
